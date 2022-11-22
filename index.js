@@ -29,7 +29,7 @@ async function sendMessage(codesFromWeb) {
   for (let pushToken of CodesFromdb) {
     // Each push token looks like ExponentPushToken[xxxxxxxxxxxxxxxxxxxxxx]
 
-    console.log('pushToken',pushToken);
+   // console.log('pushToken',pushToken);
   
   
     if (!Expo.isExpoPushToken(pushToken)) {
@@ -58,7 +58,7 @@ let tickets = [];
   for (let chunk of chunks) {
     try {
       let ticketChunk = await expo.sendPushNotificationsAsync(chunk);
-      console.log(ticketChunk);
+      //console.log(ticketChunk);
       tickets.push(...ticketChunk);
       // NOTE: If a ticket contains an error code in ticket.details.error, you
       // must handle it appropriately. The error codes are listed in the Expo
