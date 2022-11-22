@@ -178,7 +178,7 @@ const funt = async () => {
 
   const browser = await puppeteer.launch({
     headless: true,
-   // args: ["--no-sandbox"],
+    args: ["--no-sandbox"],
   });
 
   let page = await browser.newPage();
