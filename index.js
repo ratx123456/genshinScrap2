@@ -31,7 +31,7 @@ async function sendMessage(codesFromWeb) {
 
     console.log('pushToken',pushToken);
   
-    // Check that all your push tokens appear to be valid Expo push tokens
+  
     if (!Expo.isExpoPushToken(pushToken)) {
       console.error(`Push token ${pushToken} is not a valid Expo push token`);
       continue;
