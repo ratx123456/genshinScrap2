@@ -26,11 +26,11 @@ async function sendMessage(codesFromWeb) {
       CodesFromdb = doc.docs.map((x) => x.data().codes);
     });
 
+    
+
   for (let pushToken of CodesFromdb) {
     // Each push token looks like ExponentPushToken[xxxxxxxxxxxxxxxxxxxxxx]
-
-   // console.log('pushToken',pushToken);
-  
+   // console.log('pushToken',pushToken); 
   
     if (!Expo.isExpoPushToken(pushToken)) {
       console.error(`Push token ${pushToken} is not a valid Expo push token`);
@@ -71,8 +71,6 @@ let tickets = [];
 })();
   
 }
-
-
 
 async function fillDbWithCodes (codesFromWeb) {
 
@@ -119,11 +117,13 @@ function areEqual(array1, array2) {
   return false;
 }
 
+//TODO: quitar el code quemado
+
 const getCodesFromdb = async (codesFromWeb) => {
 
 
- 
-  console.log('codesFromWeb',codesFromWeb);
+  let CodesFromdb
+  
   try {
 
     await db.collection("codes")
@@ -132,7 +132,7 @@ const getCodesFromdb = async (codesFromWeb) => {
       CodesFromdb = doc.docs.map((x) => x.data().codes);
     });
    
-   console.log('codes from db',CodesFromdb);
+
    //sendMessage(codesFromWeb)
 
 
@@ -152,7 +152,7 @@ const getCodesFromdb = async (codesFromWeb) => {
 
     if (areEqual(CodesFromdb, codesFromWeb)) {
       console.log('mismos codigos')
-      sendMessage(codesFromWeb)
+      //sendMessage(codesFromWeb)
     }else{
       deleteDb(CodesFromdb)  
      console.log('misma longitud pero diferente contenido')
@@ -172,6 +172,7 @@ const getCodesFromdb = async (codesFromWeb) => {
   
  
 };
+
 
 const funt = async () => {
   let codesFromWeb;
